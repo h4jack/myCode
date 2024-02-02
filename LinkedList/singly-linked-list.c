@@ -36,14 +36,14 @@ int find(list *head, int data){
 
 
 void push_top(list **head, int data){
-    list *new_node = malloc(sizeof(list*));
+    list *new_node = malloc(sizeof(list));
     new_node->data = data;
     new_node->next = *head;
     *head = new_node;
 }
 
 void push_back(list **head, int data){
-    list *new_node = malloc(sizeof(list*));
+    list *new_node = malloc(sizeof(list));
     new_node->data = data;
     if(!*head){
         new_node->next = *head;
@@ -65,7 +65,7 @@ void push_at(list **head, int index, int data){
         return;
     }
 
-    list *new_node = malloc(sizeof(list*));
+    list *new_node = malloc(sizeof(list));
     new_node->data = data;
     
     if(index == 0){
