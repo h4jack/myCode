@@ -2,17 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//defined the structre of the linked list.
 typedef struct LinkedList{
     int data;
     struct LinkedList *next;
 }list;
 
+//check the list is empty of not.
 char isEmpty(list *head){
     if(head)
         return 0;
     return 1;
 }
 
+//return the length of the linked list.
 int len(list *head){
     int count = 0;
     while(head){
@@ -22,6 +25,7 @@ int len(list *head){
     return count;
 }
 
+//find a element in a linked list if not found returns -1.
 int find(list *head, int data){
     int i = 0;
     while(head){
@@ -34,7 +38,7 @@ int find(list *head, int data){
     return -1;
 }
 
-
+//push elements in the top of the list.
 void push_top(list **head, int data){
     list *new_node = malloc(sizeof(list));
     new_node->data = data;
@@ -42,6 +46,7 @@ void push_top(list **head, int data){
     *head = new_node;
 }
 
+//insert elements in the bottom of the list.
 void push_back(list **head, int data){
     list *new_node = malloc(sizeof(list));
     new_node->data = data;
@@ -58,6 +63,7 @@ void push_back(list **head, int data){
     new_node->next = NULL;
 }
 
+//insert elements at a index.
 void push_at(list **head, int index, int data){
     int l = len(*head);
     if(index < 0 || index > l){
@@ -85,6 +91,7 @@ void push_at(list **head, int index, int data){
     new_node->next = temp; 
 }
 
+//update or replace data of element in a linked list. 
 void update(list *head, int index, int new_data){
     if(isEmpty(head)){
         printf("list is empty.\n");
@@ -103,6 +110,7 @@ void update(list *head, int index, int new_data){
     printf("index out of range.\n");
 }
 
+//delete top elements in a linked list.
 int pop_top(list **head){//make sure your list is not empty before passing any argument.
     list *temp = *head;
     *head = (*head)->next;
@@ -111,6 +119,7 @@ int pop_top(list **head){//make sure your list is not empty before passing any a
     return data;
 }
 
+//delete bottom element of a linked list.
 int pop_back(list **head){
     if(!(*head)->next){
         int data = (*head)->data;
@@ -126,17 +135,16 @@ int pop_back(list **head){
     free(temp->next);
     temp->next = NULL;
     return data;
-
 }
 
-
+//delete element of a index in a linked list.
 int pop_at(list **head,int index){
     int l = len(*head);
     if(index < 0 || index >= l){
         printf("index out of range.\n");
         return -1;
     }
-
+    
     list *temp = *head, *prev = NULL;
     int i = 0;
     int data;
