@@ -15,13 +15,11 @@ stack create(){
 }
 
 int isEmpty(stack st){
-    int top = st.top;
-    return (top == -1);
+    return (st.top == -1);
 }
 
 int isFull(stack st){
-    int top = st.top;
-    return (top == MAX-1);
+    return (st.top == MAX-1);
 }
 
 int peek(stack st){
