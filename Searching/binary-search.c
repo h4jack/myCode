@@ -1,14 +1,20 @@
 // implement the binary search algorithm using c.
 #include <stdio.h>
 
+void printArray(int arr[], int low, int high){
+    while(low < high){
+        printf("%d ",arr[low++]);
+    }
+}
+
 // binary search iteratively.
 int binarySearch(int arr[], int len, int key){
     int high = len;
     int low = 0;
-    int mid = (high+low) / 2;
+    int mid = low + (high-low) / 2;
 
     while(high >= low){
-        mid = (high+low) / 2;
+        mid = low + (high-low) / 2;
         if(arr[mid] == key){
             return mid;
         }else if(arr[mid] < key){
@@ -54,8 +60,8 @@ int main(){
     printf("Enter the element you want to search on the array: ");
     int key = scanInt();
 
-    // int result = binarySearch(arr,n,key); //iterative search.
-    int result = binarySearch(arr, n, 0, key); //recursive search.
+    int result = binarySearch(arr,n,key); //iterative search.
+    // int result = binarySearch(arr, n, 0, key); //recursive search.
 
     if(result != -1){
         printf("the element %d found in index %d of the array.",key, result);
